@@ -48,7 +48,7 @@ resource "yandex_compute_instance" "vm-1" {
 
   connection {
     type     = "ssh"
-    user     = "user1"
+    user     = "test1"
     private_key = "${file("/Users/user1/.ssh/id_rsa")}"
     host     = self.network_interface.0.nat_ip_address
   }
