@@ -45,6 +45,14 @@ resource "yandex_compute_instance" "vm-1" {
     serial-port-enable = 1
     "user-data": "#cloud-config\nusers:\n  - name: test1\n    groups: sudo\n    shell: /bin/bash\n    sudo: ['ALL=(ALL) NOPASSWD:ALL']\n    ssh-authorized-keys:\n  - ssh-rsa .............
   }
+
+  connection {
+    type     = "ssh"
+    user     = "user1"
+    private_key = "${file("/Users/user1/.ssh/id_rsa")}"
+    host     = self.network_interface.0.nat_ip_address
+  }
+
 }
 
 resource "yandex_vpc_network" "network-1" {
