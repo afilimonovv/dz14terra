@@ -22,7 +22,11 @@ data "yandex_compute_image" "ubuntu_image" {
 
 resource "yandex_compute_instance" "vm-1" {
   name = "terraform1"
+  hostname = "first"
   allow_stopping_for_update = true
+  platform_id = "standard-v3"
+  zone        = "ru-central1-b"
+
 
   resources {
     cores  = 2
